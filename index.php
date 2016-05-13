@@ -58,7 +58,7 @@
             <button id="newTask" type="button" class="btn btn-primary btn-lg" style="width:100%;margin-bottom: 5px;" data-toggle="modal" data-target="#myModal">
                 Add Task
             </button>
-            <div class="list-group">
+            <div id="TaskList" class="list-group">
                 <!-- Assignment: These are simply dummy tasks to show how it should look and work. You need to dynamically update this list with actual tasks -->
                 <a id="1" href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
                     <h4 class="list-group-item-heading">Task Name</h4>
