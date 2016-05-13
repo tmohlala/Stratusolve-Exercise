@@ -12,9 +12,11 @@ The final result should be a 1 page app that displays a list of tasks and allows
 To start, create a branch of this project with your name and continue within the existing code to complete the assignment. Once you are done, please send an email to info@stratusolve.co to let us know.
 
 Key functions that will be required are:
+
 In PHP:
 * json_encode();
 * json_decode();
+
 In jQuery:
 * $.post();
 * Functions to update html elements on the page
