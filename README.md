@@ -8,6 +8,7 @@ The final result should be a 1 page app that displays a list of tasks and allows
 * You will need to implement the jquery code on the frontend that sends the task information to the server
 * You will need to implement a PHP class that will be able to handle the modification of the task object
 * You will need to implement a PHP script that receives a POST with the object information and then either updates, creates or deletes the task object
+
 To start, create a branch of this project with your name and continue within the existing code to complete the assignment. Once you are done, please send an email to info@stratusolve.co to let us know.
 
 Key functions that will be required are:
