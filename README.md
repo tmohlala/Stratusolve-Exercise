@@ -21,3 +21,6 @@ In jQuery:
 * $.post();
 * Functions to update html elements on the page
 
+Prerequisites:
+* PHP and Apache running on your local machine. For more information on how to set this up, visit https://www.mamp.info/en/
+
