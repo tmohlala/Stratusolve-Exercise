@@ -26,7 +26,16 @@
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                ...
+                <form action="update_task.php" method="post">
+                    <div class="row">
+                        <div class="col-md-12" style="margin-bottom: 5px;;">
+                            <input id="InputTaskName" type="text" placeholder="Task Name" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <textarea id="InputTaskDescription" placeholder="Description" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -79,11 +88,9 @@
         var modal = $(this);
         if (triggerElement.attr("id") == 'newTask') {
             modal.find('.modal-title').text('New Task');
-            modal.find('.modal-body').html('Assignment: Complete this...');
             $('#deleteTask').hide();
         } else {
             modal.find('.modal-title').text('Task details');
-            modal.find('.modal-body').html('Assignment: Complete this...');
             $('#deleteTask').show();
             console.log('Task ID: '+triggerElement.attr("id"));
         }
