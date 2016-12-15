@@ -7,6 +7,7 @@
  * @package    ${NAMESPACE}
  * @subpackage ${NAME}
  * @author     johangriesel <info@stratusolve.com>
+ * Task_Data.txt is expected to be a json encoded string, e.g: [{"TaskId":1,"TaskName":"Test","TaskDescription":"Test"},{"TaskId":"2","TaskName":"Test2","TaskDescription":"Test2"}]
  */
 $taskData = file_get_contents('Task_Data.txt');
 $html = '<a id="-1" href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
@@ -19,7 +20,7 @@ if (strlen($taskData) < 1) {
 $taskArray = json_decode($taskData);
 if (sizeof($taskArray) > 0) {
     $html = '';
-    foreach ($taskArray as $index=>$task) {
+    foreach ($taskArray as $task) {
         $html .= '<a id="'.$task->TaskId.'" href="#" class="list-group-item" data-toggle="modal" data-target="#myModal">
                     <h4 class="list-group-item-heading">'.$task->TaskName.'</h4>
                     <p class="list-group-item-text">'.$task->TaskDescription.'</p>
