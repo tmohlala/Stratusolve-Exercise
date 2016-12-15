@@ -8,6 +8,12 @@ class Task {
     public $TaskDescription;
     protected $TaskDataSource;
     public function __construct($Id = null) {
+        $this->TaskDataSource = file_get_contents('Task_Data.txt');
+        if (strlen($this->TaskDataSource) > 0)
+            $this->TaskDataSource = json_decode($this->TaskDataSource); // Should decode to an array of Task objects
+        else
+            $this->TaskDataSource = array(); // If it does not, then the data source is assumed to be empty and we create an empty array
+
         if ($Id) {
             // This is an existing task
             $this->LoadFromId($Id);
@@ -15,11 +21,6 @@ class Task {
             // This is a new task
             $this->Create();
         }
-        $this->TaskDataSource = file_get_contents('Task_Data.txt');
-        if (strlen($this->TaskDataSource) > 0)
-            $this->TaskDataSource = json_decode($this->TaskDataSource);
-        else
-            $this->TaskDataSource = null;
     }
     protected function Create() {
         // This function needs to generate a new unique ID for the task
