@@ -25,7 +25,6 @@ class Task {
         $this->TaskId = $this->getUniqueId();
         $this->TaskName = 'New Task';
         $this->TaskDescription = 'New Description';
-        var_dump($this);
     }
     protected function getUniqueId() {
         // Assignment: Code to get new unique ID
