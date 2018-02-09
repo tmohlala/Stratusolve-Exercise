@@ -88,12 +88,30 @@
     });
     $('#saveTask').click(function() {
         //Assignment: Implement this functionality
+        var taskName = $("#InputTaskName").val();
+        var description = $("#InputTaskDescription").val();
+
+        $.post( "update_task.php",
+        {
+            InputTaskName: taskName,
+            InputTaskDescription: description
+        });
         alert('Save... Id:'+currentTaskId);
         $('#myModal').modal('hide');
         updateTaskList();
     });
     $('#deleteTask').click(function() {
         //Assignment: Implement this functionality
+        var taskName = $("#InputTaskName").val();
+        var description = $("#InputTaskDescription").val();
+
+        $.post("update_task.php",
+        {
+            Id: currentTaskId,
+        },
+        function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
         alert('Delete... Id:'+currentTaskId);
         $('#myModal').modal('hide');
         updateTaskList();
