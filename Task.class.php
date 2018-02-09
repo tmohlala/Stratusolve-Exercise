@@ -41,19 +41,31 @@ class Task {
 
     public function Save() {
         //Assignment: Code to save task here
-        array_push($this->TaskDataSource, array("TaskId"=> $this->TaskId ,"TaskName"=> $this->TaskName, "TaskDescription"=> $this->TaskDescription));
-        $this->TaskDataSource = json_encode($this->TaskDataSource);
-        $file = fopen('Task_Data.txt', "w") or die("Error: failed to open file!");
-        fwrite($file, $this->TaskDataSource);
-    }
-    public function Delete() {
-        //Assignment: Code to delete task here
-        if ($index = $this->LoadFromId($this->TaskId)) {
-            unset($this->TaskDataSource[$index]);
+        if($this->LoadFromId($this->TaskId) === false) {
+            array_push($this->TaskDataSource, array("TaskId"=> $this->TaskId ,"TaskName"=> $this->TaskName, "TaskDescription"=> $this->TaskDescription));
             $this->TaskDataSource = json_encode($this->TaskDataSource);
             $file = fopen('Task_Data.txt', "w") or die("Error: failed to open file!");
             fwrite($file, $this->TaskDataSource);
-            return $index;
+        }
+        else {
+            $index = $this->LoadFromId($this->TaskId);
+            $this->TaskDataSource[$index]->TaskName = $this->TaskName;
+            $this->TaskDataSource[$index]->TaskDescription = $this->TaskDescription;
+            $this->TaskDataSource = json_encode($this->TaskDataSource);
+            $file = fopen('Task_Data.txt', "w") or die("Error: failed to open file!");
+            fwrite($file, $this->TaskDataSource);
+        }
+    }
+    public function Delete() {
+        //Assignment: Code to delete task here
+        if (($index = $this->LoadFromId($this->TaskId)) !== false) {
+            if($index == 0) {
+                array_shift($this->TaskDataSource);
+            }else
+                unset($this->TaskDataSource[$index]);
+            $this->TaskDataSource = json_encode($this->TaskDataSource);
+            $file = fopen('Task_Data.txt', "w") or die("Error: failed to open file!");
+            fwrite($file, $this->TaskDataSource);
         }
     }
 }
